@@ -51,6 +51,10 @@ const Lazy = {
                 $source.attr('srcset', $source.attr('data-srcset'));
                 $source.removeAttr('data-srcset');
               }
+              if ($source.attr('data-sizes')) {
+                $source.attr('sizes', $source.attr('data-sizes'));
+                $source.removeAttr('data-sizes');
+              }
             });
           }
           if (src) {
