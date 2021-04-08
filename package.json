@@ -1,16 +1,12 @@
 {
-  "name": "swiper-src",
+  "name": "swiper",
   "version": "5.4.5",
   "description": "Most modern mobile touch slider and framework with hardware accelerated transitions",
+  "main": "js/swiper.js",
+  "jsnext:main": "js/swiper.esm.bundle.js",
+  "module": "js/swiper.esm.bundle.js",
   "scripts": {
-    "build:dev": "cross-env NODE_ENV=development gulp build",
-    "build:prod": "cross-env NODE_ENV=production gulp build",
-    "build-icons-font": "python ./scripts/icon-font/generate.py",
-    "dev": "cross-env NODE_ENV=development gulp build && cross-env NODE_ENV=development gulp playground && cross-env NODE_ENV=development gulp server",
-    "prod": "cross-env NODE_ENV=production gulp playground && cross-env NODE_ENV=production gulp server",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
-    "test": "npm run lint && npm run build:dev"
+    "postinstall": "echo \"\u001b[35m\u001b[1mLove Swiper? Support Vladimir's work by donating or pledging on patreon:\u001b[22m\u001b[39m\n > \u001b[32mhttps://patreon.com/vladimirkharlampidi\u001b[0m\n\""
   },
   "repository": {
     "type": "git",
@@ -37,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/nolimits4web/Swiper/issues"
   },
-  "homepage": "http://swiperjs.com",
+  "homepage": "https://swiperjs.com",
   "funding": {
     "type": "patreon",
     "url": "https://www.patreon.com/vladimirkharlampidi"
@@ -53,25 +49,6 @@
     "Firefox >= 31",
     "Samsung >= 5"
   ],
-  "devDependencies": {
-    "@rollup/plugin-buble": "^0.21.1",
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "@rollup/plugin-replace": "^2.3.1",
-    "autoprefixer": "^9.7.6",
-    "clean-css": "^4.2.3",
-    "cross-env": "^7.0.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "glob": "^7.1.6",
-    "gulp": "^4.0.2",
-    "gulp-connect": "^5.7.0",
-    "gulp-open": "^3.0.1",
-    "less": "^3.11.1",
-    "postcss": "^7.0.27",
-    "rollup": "^2.4.0",
-    "terser": "^4.6.11"
-  },
   "dependencies": {
     "dom7": "^2.1.5",
     "ssr-window": "^2.0.0"
