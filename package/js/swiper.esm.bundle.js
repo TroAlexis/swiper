@@ -3,11 +3,11 @@
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * http://swiperjs.com
  *
- * Copyright 2014-2020 Vladimir Kharlampidi
+ * Copyright 2014-2021 Vladimir Kharlampidi
  *
  * Released under the MIT License
  *
- * Released on: June 16, 2020
+ * Released on: April 8, 2021
  */
 
 import { $, addClass, removeClass, hasClass, toggleClass, attr, removeAttr, data, transform, transition as transition$1, on, off, trigger, transitionEnd as transitionEnd$1, outerWidth, outerHeight, offset, css, each, html, text, is, index, eq, append, prepend, next, nextAll, prev, prevAll, parent, parents, closest, find, children, filter, remove, add, styles } from 'dom7/dist/dom7.modular';
@@ -6036,6 +6036,10 @@ const Lazy = {
               if ($source.attr('data-srcset')) {
                 $source.attr('srcset', $source.attr('data-srcset'));
                 $source.removeAttr('data-srcset');
+              }
+              if ($source.attr('data-sizes')) {
+                $source.attr('sizes', $source.attr('data-sizes'));
+                $source.removeAttr('data-sizes');
               }
             });
           }
