@@ -7,7 +7,7 @@
  *
  * Released under the MIT License
  *
- * Released on: April 8, 2021
+ * Released on: April 9, 2021
  */
 
 (function (global, factory) {
@@ -7036,43 +7036,14 @@
           var srcset = $imageEl.attr('data-srcset');
           var sizes = $imageEl.attr('data-sizes');
           var $pictureEl = $imageEl.parent('picture');
-
-          swiper.loadImage($imageEl[0], (src || background), srcset, sizes, false, function () {
+          
+          imageEl.addEventListener('load', function () {
             if (typeof swiper === 'undefined' || swiper === null || !swiper || (swiper && !swiper.params) || swiper.destroyed) { return; }
-            if (background) {
-              $imageEl.css('background-image', ("url(\"" + background + "\")"));
-              $imageEl.removeAttr('data-background');
-            } else {
-              if (srcset) {
-                $imageEl.attr('srcset', srcset);
-                $imageEl.removeAttr('data-srcset');
-              }
-              if (sizes) {
-                $imageEl.attr('sizes', sizes);
-                $imageEl.removeAttr('data-sizes');
-              }
-              if ($pictureEl.length) {
-                $pictureEl.children('source').each(function (sourceIndex, sourceEl) {
-                  var $source = $(sourceEl);
-
-                  if ($source.attr('data-srcset')) {
-                    $source.attr('srcset', $source.attr('data-srcset'));
-                    $source.removeAttr('data-srcset');
-                  }
-                  if ($source.attr('data-sizes')) {
-                    $source.attr('sizes', $source.attr('data-sizes'));
-                    $source.removeAttr('data-sizes');
-                  }
-                });
-              }
-              if (src) {
-                $imageEl.attr('src', src);
-                $imageEl.removeAttr('data-src');
-              }
-            }
-
+            
             $imageEl.addClass(params.loadedClass).removeClass(params.loadingClass);
+
             $slideEl.find(("." + (params.preloaderClass))).remove();
+
             if (swiper.params.loop && loadInDuplicate) {
               var slideOriginalIndex = $slideEl.attr('data-swiper-slide-index');
               if ($slideEl.hasClass(swiper.params.slideDuplicateClass)) {
@@ -7088,6 +7059,39 @@
               swiper.updateAutoHeight();
             }
           });
+
+          if (background) {
+            $imageEl.css('background-image', ("url(\"" + background + "\")"));
+            $imageEl.removeAttr('data-background');
+          } else {
+            if (srcset) {
+              $imageEl.attr('srcset', srcset);
+              $imageEl.removeAttr('data-srcset');
+            }
+            if (sizes) {
+              $imageEl.attr('sizes', sizes);
+              $imageEl.removeAttr('data-sizes');
+            }
+            if ($pictureEl.length) {
+              $pictureEl.children('source').each(function (sourceIndex, sourceEl) {
+                var $source = $(sourceEl);
+
+                if ($source.attr('data-srcset')) {
+                  $source.attr('srcset', $source.attr('data-srcset'));
+                  $source.removeAttr('data-srcset');
+                }
+                if ($source.attr('data-sizes')) {
+                  $source.attr('sizes', $source.attr('data-sizes'));
+                  $source.removeAttr('data-sizes');
+                }
+              });
+            }
+            if (src) {
+              $imageEl.attr('src', src);
+              $imageEl.removeAttr('data-src');
+            }
+          }
+          if (typeof swiper === 'undefined' || swiper === null || !swiper || (swiper && !swiper.params) || swiper.destroyed) { return; }
 
           swiper.emit('lazyImageLoad', $slideEl[0], $imageEl[0]);
         });
